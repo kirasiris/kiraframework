@@ -5,7 +5,7 @@
     }
 
     public function index(){
-      redirect('welcome');
+      redirect('welcome/index');
     }
 
     public function register(){
@@ -20,6 +20,7 @@
         $_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
         $data = [
+          'username' => trim($_POST['username']),
           'name' => trim($_POST['name']),
           'email' => trim($_POST['email']),
           'password' => trim($_POST['password']),
@@ -33,6 +34,10 @@
         // Validate email
         if(empty($data['email'])){
             $data['email_err'] = 'Please enter an email';
+            // Validate username
+            if(empty($data['username'])){
+              $data['username_err'] = 'Please enter an username';
+            }
             // Validate name
             if(empty($data['name'])){
               $data['name_err'] = 'Please enter a name';
@@ -61,7 +66,7 @@
         }
          
         // Make sure errors are empty
-        if(empty($data['name_err']) && empty($data['email_err']) && empty($data['password_err']) && empty($data['confirm_password_err'])){
+        if(empty($data['username_err']) && empty($data['name_err']) && empty($data['email_err']) && empty($data['password_err']) && empty($data['confirm_password_err'])){
           // SUCCESS - Proceed to insert
 
           // Hash Password
@@ -85,6 +90,7 @@
 
         // Init data
         $data = [
+          'username' => '',
           'name' => '',
           'email' => '',
           'password' => '',
@@ -175,24 +181,24 @@
 
     // Create Session With User Info
     public function createUserSession($user){
-      $_SESSION['user_id'] = $user->id;
-      $_SESSION['user_email'] = $user->email; 
-      $_SESSION['user_name'] = $user->name;
+      $_SESSION['userId'] = $user->id;
+      $_SESSION['userEmail'] = $user->email; 
+      $_SESSION['userName'] = $user->name;
       redirect('posts');
     }
 
     // Logout & Destroy Session
     public function logout(){
-      unset($_SESSION['user_id']);
-      unset($_SESSION['user_email']);
-      unset($_SESSION['user_name']);
+      unset($_SESSION['userId']);
+      unset($_SESSION['userEmail']);
+      unset($_SESSION['userName']);
       session_destroy();
       redirect('users/login');
     }
 
     // Check Logged In
     public function isLoggedIn(){
-      if(isset($_SESSION['user_id'])){
+      if(isset($_SESSION['userId'])){
         return true;
       } else {
         return false;

@@ -13,8 +13,8 @@
                         users.id as userId
                         FROM posts 
                         INNER JOIN users 
-                        ON posts.user_id = users.id
-                        ORDER BY posts.created_at DESC;");
+                        ON posts.userId = users.id
+                        ORDER BY posts.createdAt DESC;");
 
       $results = $this->db->resultset();
 
@@ -35,12 +35,12 @@
     // Add Post
     public function addPost($data){
       // Prepare Query
-      $this->db->query('INSERT INTO posts (title, user_id, body) 
-      VALUES (:title, :user_id, :body)');
+      $this->db->query('INSERT INTO posts (title, userId, body) 
+      VALUES (:title, :userId, :body)');
 
       // Bind Values
       $this->db->bind(':title', $data['title']);
-      $this->db->bind(':user_id', $data['user_id']);
+      $this->db->bind(':userId', $data['userId']);
       $this->db->bind(':body', $data['body']);
       
       //Execute

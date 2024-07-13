@@ -7,14 +7,14 @@
     // Load Homepage
     public function index(){
       // If logged in, redirect to posts
-      if(isset($_SESSION['user_id'])){
+      if(isset($_SESSION['userId'])){
         redirect('posts');
       }
 
-      //Set Data
+      // Set Data
       $data = [
-        'title' => 'Kira',
-        'description' => 'Lighest PHP Framework to Build Amazing Applications'
+        'title' => FRAMEWORKNAME,
+        'description' => FRAMEWORKDESCRIPTION
       ];
 
       // Load homepage/index view
@@ -24,7 +24,7 @@
     public function about(){
       //Set Data
       $data = [
-        'version' => '1.0.0'
+        'version' => FRAMEWORKVERSION
       ];
 
       // Load about view

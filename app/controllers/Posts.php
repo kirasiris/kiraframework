@@ -1,7 +1,7 @@
 <?php
   class Posts extends Controller{
     public function __construct(){
-      if(!isset($_SESSION['user_id'])){
+      if(!isset($_SESSION['userId'])){
         redirect('users/login');
       }
       // Load Models
@@ -23,7 +23,7 @@
     // Show Single Post
     public function show($id){
       $post = $this->postModel->getPostById($id);
-      $user = $this->userModel->getUserById($post->user_id);
+      $user = $this->userModel->getUserById($post->userId);
 
       $data = [
         'post' => $post, 
@@ -42,7 +42,7 @@
         $data = [
           'title' => trim($_POST['title']),
           'body' => trim($_POST['body']),
-          'user_id' => $_SESSION['user_id'],   
+          'userId' => $_SESSION['userId'],   
           'title_err' => '',
           'body_err' => ''
         ];
@@ -92,7 +92,7 @@
           'id' => $id,
           'title' => trim($_POST['title']),
           'body' => trim($_POST['body']),
-          'user_id' => $_SESSION['user_id'],   
+          'userId' => $_SESSION['userId'],   
           'title_err' => '',
           'body_err' => ''
         ];
@@ -127,7 +127,7 @@
         $post = $this->postModel->getPostById($id);
 
         // Check for owner
-        if($post->user_id != $_SESSION['user_id']){
+        if($post->userId != $_SESSION['userId']){
           redirect('posts');
         }
 

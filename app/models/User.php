@@ -9,10 +9,11 @@
     // Add User / Register
     public function register($data){
       // Prepare Query
-      $this->db->query('INSERT INTO users (name, email,password) 
-      VALUES (:name, :email, :password)');
+      $this->db->query('INSERT INTO users (username, name, email,password)
+      VALUES (:username, :name, :email, :password)');
 
       // Bind Values
+      $this->db->bind(':username', $data['username']);
       $this->db->bind(':name', $data['name']);
       $this->db->bind(':email', $data['email']);
       $this->db->bind(':password', $data['password']);
