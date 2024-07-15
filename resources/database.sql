@@ -1,9 +1,13 @@
+-- Create the 'kiraframework' database
+CREATE DATABASE IF NOT EXISTS kiraframework;
+USE kiraframework;
+
 /*
 *
 * CREATE TABLES
 *
 */
-CREATE TABLE `blogs` (
+CREATE TABLE IF NOT EXISTS `blogs` (
   `id` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
@@ -12,7 +16,7 @@ CREATE TABLE `blogs` (
   `updatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE `posts` (
+CREATE TABLE IF NOT EXISTS `posts` (
   `id` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
@@ -21,7 +25,7 @@ CREATE TABLE `posts` (
   `updatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE `comments` (
+CREATE TABLE IF NOT EXISTS `comments` (
   `id` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
   `resourceId` int(11) NOT NULL,
@@ -31,7 +35,7 @@ CREATE TABLE `comments` (
   `updatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE `users` (
+CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -53,8 +57,7 @@ ALTER TABLE `posts`
   ADD PRIMARY KEY (`id`);
 
 ALTER TABLE `comments`
-  ADD PRIMARY KEY (`id`)
-  ADD FOREIGN KEY (userId) REFERENCES users(id);
+  ADD PRIMARY KEY (`id`);
 
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);

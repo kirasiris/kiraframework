@@ -1,5 +1,24 @@
 <?php
-  require_once('../app/bootstrap.php');
 
-  // Init Core Library
-  $init = new Core;
+namespace public;
+
+require __DIR__ . '/../vendor/autoload.php';
+
+use kira\libraries\Router;
+use kira\libraries\Session;
+
+Session::start();
+
+require '../helpers.php';
+
+// Instatiate the router
+$router = new Router();
+
+// Get routes
+$routes = require basePath('routes.php');
+
+// Get current URI and HTTP method
+$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+
+// Route the request
+$router->route($uri);

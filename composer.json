@@ -1,0 +1,16 @@
+{
+    "name": "kirasiris/kira",
+    "description": "The lightest PHP Framework to Build Amazing Applications",
+    "authors": [
+      {
+        "name": "Kevin Uriel Fonseca",
+        "email": "kebin1421@hotmail.com"
+      }
+    ],
+    "autoload": {
+      "psr-4": {
+        "app\\": "app/",
+        "kira\\": "kira/"
+      }
+    }
+  }

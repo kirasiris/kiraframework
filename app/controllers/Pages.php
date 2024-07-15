@@ -1,33 +1,48 @@
 <?php
-  class Pages extends Controller{
-    public function __construct(){
-     
+
+namespace app\controllers;
+
+use kira\core\Controller;
+use kira\core\Database;
+
+// use app\libraries\Error;
+
+class Pages extends Controller
+{
+    protected $db;
+
+    public function __construct()
+    {
+        $config = require basePath('config/db.php');
+        $this->db = new Database($config);
     }
 
-    // Load Homepage
-    public function index(){
-      // If logged in, redirect to posts
-      if(isset($_SESSION['userId'])){
-        redirect('posts');
-      }
+    public function index()
+    {
+        // If logged in, redirect...
 
-      // Set Data
-      $data = [
-        'title' => FRAMEWORKNAME,
-        'description' => FRAMEWORKDESCRIPTION
-      ];
+        // Set data
+        $data = [
+            'title' => 'Page Index',
+            'description' => 'Page description'
+        ];
 
-      // Load homepage/index view
-      $this->view('pages/index', $data);
+        // Load welcome/index view
+        $this->view('pages/index', $data);
     }
 
-    public function about(){
-      //Set Data
-      $data = [
-        'version' => FRAMEWORKVERSION
-      ];
+    public function about()
+    {
+        // If logged in, redirect...
 
-      // Load about view
-      $this->view('pages/about', $data);
+        // Set data
+        $data = [
+            'title' => 'Page about',
+            'description' => 'Page about description',
+            'version' => '1.0.1'
+        ];
+
+        // Load welcome/index view
+        $this->view('pages/about', $data);
     }
-  }
+}
