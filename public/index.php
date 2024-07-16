@@ -1,6 +1,7 @@
 <?php
 
-// declare(strict_types=1);
+// Force developer to have some life  standards!
+declare(strict_types=1);
 
 namespace public;
 
@@ -20,7 +21,6 @@ Session::start();
 // Load env variables from root folder
 $dotenv = Dotenv::createImmutable(__DIR__ . '/../');
 $dotenv->safeLoad();
-
 
 // Load env variables from kira folder
 $kiradotenv = Dotenv::createImmutable(__DIR__ . '/../kira');
