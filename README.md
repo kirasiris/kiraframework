@@ -21,6 +21,17 @@ DocumentRoot "C:/xampp/htdocs/kira/public"
 <Directory "C:/xampp/htdocs/kira/public">
 ```
 
+**SET YOUR DB INFORMATION**
+Access the `.env` file within the root folder, in there you will find all the variables that you can customize according to your liking.
+
+```
+DB_HOST=""
+DB_PORT=""
+DB_NAME=""
+DB_USERNAME=""
+DB_PASSWORD=""
+```
+
 ## Documentation
 
 Visit [https://kevinurielfonseca.me/kiraframework/docs](https://kevinurielfonseca.me/kiraframework/docs) to view the full documentation.
