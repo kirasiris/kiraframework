@@ -13,8 +13,18 @@ class Auth extends Controller
 
     public function __construct()
     {
-        $config = require basePath('config/db.php');
-        $this->db = new Database($config);
+
+        $this->db = new Database();
+    }
+
+    /*
+     * Profile page
+     *
+     */
+    public function profile()
+    {
+        $data = Session::get('user');
+        $this->view('auth/profile', $data);
     }
 
     /**
@@ -74,7 +84,7 @@ class Auth extends Controller
         }
 
         if (!empty($errors)) {
-            $this->view('auth/register', [
+            $this->view('/auth/register', [
                 'errors' => $errors,
                 'user' => [
                     'username' => $username,
@@ -95,7 +105,7 @@ class Auth extends Controller
 
         if ($user) {
             $errors['email'] = 'That email already exists';
-            $this->view('auth/create', [
+            $this->view('/auth/register', [
                 'errors' => $errors
             ]);
             exit;
@@ -122,7 +132,7 @@ class Auth extends Controller
             'email' => $email,
         ]);
 
-        redirect('/');
+        redirect('/auth/profile');
     }
 
     /**
@@ -163,7 +173,7 @@ class Auth extends Controller
 
         // Check for errors
         if (!empty($errors)) {
-            $this->view('auth/login', [
+            $this->view('/auth/login', [
                 'errors' => $errors
             ]);
             exit;
@@ -178,7 +188,7 @@ class Auth extends Controller
 
         if (!$user) {
             $errors['email'] = 'Incorrect credentials';
-            $this->view('auth/login', [
+            $this->view('/auth/login', [
                 'errors' => $errors
             ]);
             exit;
@@ -187,7 +197,7 @@ class Auth extends Controller
         // Check if password is correct
         if (!password_verify($password, $user->password)) {
             $errors['email'] = 'Incorrect credentials';
-            $this->view('auth/login', [
+            $this->view('/auth/login', [
                 'errors' => $errors
             ]);
             exit;
@@ -201,6 +211,6 @@ class Auth extends Controller
             'email' => $user->email,
         ]);
 
-        redirect('/');
+        redirect('/auth/profile');
     }
 }

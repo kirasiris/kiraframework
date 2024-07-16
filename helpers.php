@@ -69,8 +69,6 @@ function loadView($name, $data = [])
     if (file_exists($viewPath)) {
         extract($data);
         require $viewPath;
-    } else {
-        echo "View {$name} not found!";
     }
 }
 

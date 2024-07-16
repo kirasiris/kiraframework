@@ -18,21 +18,15 @@ use Exception;
 class Database
 {
 	public $connection;
-	//private $host = DB_HOST;
-	// private $user = DB_USER;
-	// private $pass = DB_PASS;
-	// private $dbname = DB_NAME;
 
 	private $dbh;
 	private $error;
 	private $stmt;
 
-	public function __construct($config)
+	public function __construct()
 	{
 		// Set DSN
-		$config = require basePath('config/db.php');
-
-		$dsn = "mysql:host={$config['host']};port={$config['port']};dbname={$config['dbname']}";
+		$dsn = "mysql:host={$_ENV['DB_HOST']};port={$_ENV['DB_PORT']};dbname={$_ENV['DB_NAME']}";
 
 		$options = [
 			PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
@@ -42,7 +36,7 @@ class Database
 
 		// Create a new PDO instanace
 		try {
-			$this->connection = new PDO($dsn, $config['username'], $config['password'], $options);
+			$this->connection = new PDO($dsn, $_ENV['DB_USERNAME'], $_ENV['DB_PASSWORD'], $options);
 		}		// Catch any errors
 		catch (PDOException $e) {
 			// $this->error = $e->getMessage();
@@ -63,7 +57,7 @@ class Database
 			}
 
 			// Execute query
-			$this->stmt->execute();
+			$this->execute();
 
 			return $this->stmt;
 		} catch (PDOException $e) {
@@ -74,25 +68,25 @@ class Database
 	}
 
 	// Bind values
-	public function bind($param, $value, $type = null)
-	{
-		if (is_null($type)) {
-			switch (true) {
-				case is_int($value):
-					$type = PDO::PARAM_INT;
-					break;
-				case is_bool($value):
-					$type = PDO::PARAM_BOOL;
-					break;
-				case is_null($value):
-					$type = PDO::PARAM_NULL;
-					break;
-				default:
-					$type = PDO::PARAM_STR;
-			}
-		}
-		$this->stmt->bindValue($param, $value, $type);
-	}
+	// public function bind($param, $value, $type = null)
+	// {
+	// 	if (is_null($type)) {
+	// 		switch (true) {
+	// 			case is_int($value):
+	// 				$type = PDO::PARAM_INT;
+	// 				break;
+	// 			case is_bool($value):
+	// 				$type = PDO::PARAM_BOOL;
+	// 				break;
+	// 			case is_null($value):
+	// 				$type = PDO::PARAM_NULL;
+	// 				break;
+	// 			default:
+	// 				$type = PDO::PARAM_STR;
+	// 		}
+	// 	}
+	// 	$this->stmt->bindValue($param, $value, $type);
+	// }
 
 	// Execute the prepared statement
 	public function execute()

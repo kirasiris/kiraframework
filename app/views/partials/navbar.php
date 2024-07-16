@@ -3,11 +3,11 @@
 use kira\libraries\Session;
 
 ?>
-<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark mb-3">
     <div class="container">
         <a class="navbar-brand" href="<?php echo '/'; ?>">
             <img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Logo" width="30"
-                height="24" class="me-1"><?php echo 'Kira' ?>
+                height="24" class="me-1"><?= $_ENV['FRAMEWORK_NAME'] ?>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,6 +21,8 @@ use kira\libraries\Session;
             </ul>
             <ul class="navbar-nav">
                 <?php if (Session::has('user')): ?>
+                    <li class="nav-item"><a href="/auth/profile"
+                            class="nav-link"><?php echo Session::get('user')['username'] ?></a></li>
                     <li class="nav-item">
                         <form method="POST" action="/auth/logout">
                             <button type="submit" class="nav-link"><i class="fa fa-sign-out"

@@ -16,8 +16,7 @@ class Core
 
   public function __construct()
   {
-    $config = require basePath("config/db.php");
-    $this->db = new Database($config);
+    $this->db = new Database();
   }
 
   public function model($model)
