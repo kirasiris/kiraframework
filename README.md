@@ -22,7 +22,7 @@ DocumentRoot "C:/xampp/htdocs/kira/public"
 ```
 
 **SET YOUR DB INFORMATION**
-Access the `.env` file within the root folder, in there you will find all the variables that you can customize according to your liking.
+Access the `.env` file within the root folder (you might need to create it), in there you will find all the variables that you can customize according to your liking. Otherwise simply copy and paste the following varaibles.
 
 ```
 DB_HOST=""
@@ -40,9 +40,9 @@ Visit [https://kevinurielfonseca.me/kiraframework/docs](https://kevinurielfonsec
 
 The Kira community can be found on [GitHub Discussions](https://github.com/kirasiris/kiraframework/discussions) where you can ask questions, voice ideas, and share your projects with other people.
 
-To chat with other community members you can join the Next.js [Discord](https://nextjs.org/discord) server.
+To chat with other community members you can join the Kira [Discord](https://kevinurielfonseca.me/discord) server.
 
-Do note that our [Code of Conduct](https://github.com/vercel/next.js/blob/canary/CODE_OF_CONDUCT.md) applies to all Next.js community channels. Users are **highly encouraged** to read and adhere to them to avoid repercussions.
+Do note that our [Code of Conduct](https://github.com/kirasiris/kiraframework/blob/canary/CODE_OF_CONDUCT.md) applies to all Kira community channels. Users are **highly encouraged** to read and adhere to them to avoid repercussions.
 
 ## Contributing
 
@@ -72,4 +72,4 @@ I will investigate all legitimate reports. and do my best to quickly fix the pro
 
 Email `kebin1421@hotmail.com` to disclose any security vulnerabilities.
 
-Alternatively, you can visit this [link](https://kevinurielfonseca.me/security) to know more about beFree's security
+Alternatively, you can visit this [link](https://kevinurielfonseca.me/security) to know more about Kira security

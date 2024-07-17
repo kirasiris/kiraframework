@@ -36,10 +36,6 @@ This Code of Conduct applies within all community spaces, and also applies when 
 
 ### Enforcement
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the project team responsible for enforcement at [coc@vercel.com](mailto:coc@vercel.com). All complaints will be reviewed and investigated promptly and fairly.
-
-All project maintainers are obligated to respect the privacy and security of the reporter of any incident.
-
 Project maintainers who do not follow or enforce the Code of Conduct in good
 faith may face temporary or permanent repercussions as determined by other
 members of the project's leadership.
