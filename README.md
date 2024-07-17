@@ -11,18 +11,19 @@ This is a [beginner's PHP Framework](https://kevinurielfonseca.me/kiraframework/
 
 ## Installation
 
-You will need to set your document root to the `public` directory. Here are some instructions for setting the document root for some popular local development tools:
+You will need to set your document root to the `public` directory. Here are some instructions for setting the document root for XAMPP:
 
 **XAMPP**
-If you are using XAMPP, you can set the document root in the httpd.conf file. Here is an example:
+If you are using XAMPP, you can set the document root in the `httpd.conf` file. Here is an example:
 
 ```
 DocumentRoot "C:/xampp/htdocs/kira/public"
 <Directory "C:/xampp/htdocs/kira/public">
+</Directory>
 ```
 
 **SET YOUR DB INFORMATION**
-Access the `.env` file within the root folder (you might need to create it), in there you will find all the variables that you can customize according to your liking. Otherwise simply copy and paste the following varaibles.
+Access the `.env` file within the root folder (you might need to create it), in there you will find all the variables that you can customize according to your liking. Otherwise simply copy and paste the following variables.
 
 ```
 DB_HOST=""
