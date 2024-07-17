@@ -38,7 +38,7 @@ DB_PASSWORD=""
 ```
 app/*** contains all the models, views and controllers (this is what you work with as web developer).
 kira/*** contains all the framework files (this is what you work with if you want to create/modify this framework).
-public/*** Don't touch the index.php file, that's like the entry point where everything gathers together to make it work!. You ONYL touch the css and javascript folders!. Ignore the `.htaccess`.
+public/*** Don't touch the index.php file, that's like the entry point where everything gathers together to make it work!. You ONLY touch the css and javascript folders!. Ignore the `.htaccess`.
 ```
 
 The rest of the files such as the routes.php in the root folder controls what is visible in the browser. This could be moved within the app folder, however, I wanted to keep it simple and easy to reach!. The helpers file, include some of the functions required to make it work, not as important but help a lot.
